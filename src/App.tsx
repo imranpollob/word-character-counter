@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { StatsSummary } from './components/StatsSummary';
-import { LimitsProgress } from './components/LimitsProgress';
 import { Editor } from './components/Editor';
+import { TextAnalysisSection } from './components/TextAnalysis/TextAnalysisSection';
 import { SeoContent } from './components/SeoContent';
 import { Footer } from './components/Footer';
 import { calculateMetrics } from './core/basicCounters';
+import { analyzeText } from './core/textAnalysis';
 import { LimitSettings, ThemeMode } from './types/counter';
 import {
   getSavedLimits,
@@ -22,6 +23,9 @@ export const App: React.FC = () => {
 
   // Calculated Metrics (Instant & Reactive)
   const metrics = useMemo(() => calculateMetrics(text), [text]);
+
+  // Phase 3 Text Analysis (Vocabulary, Lengths, Longest Token/Sentence)
+  const analysis = useMemo(() => analyzeText(text, true), [text]);
 
   // Save limits on change
   const handleUpdateLimits = (newLimits: LimitSettings) => {
@@ -121,21 +125,17 @@ export const App: React.FC = () => {
         </header>
 
         {/* Responsive Grid:
-            - Mobile (< lg): Metrics & Limits shown FIRST (order-1), Editor shown second (order-2)
-            - Desktop (lg): Editor on LEFT (lg:order-1), Metrics & Limits on RIGHT (lg:order-2)
+            - Mobile (< lg): Metrics & Analysis shown FIRST (order-1), Editor shown second (order-2)
+            - Desktop (lg): Editor on LEFT (lg:order-1), Metrics & Analysis on RIGHT (lg:order-2)
         */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Metrics & Target Limit Column (order-1 on mobile, lg:order-2 on desktop) */}
+          {/* Metrics & Analysis Column (order-1 on mobile, lg:order-2 on desktop) */}
           <div className="order-1 lg:order-2 lg:col-span-5 xl:col-span-5 2xl:col-span-4 space-y-4">
-            {/* 1. Counter Metrics First */}
+            {/* 1. Counter Metrics */}
             <StatsSummary metrics={metrics} />
 
-            {/* 2. Target Limit After Metrics */}
-            <LimitsProgress
-              limits={limits}
-              metrics={metrics}
-              onUpdateLimits={handleUpdateLimits}
-            />
+            {/* 2. Text Analysis & Vocabulary directly below the metrics */}
+            <TextAnalysisSection analysis={analysis} />
           </div>
 
           {/* Editor Column (order-2 on mobile, lg:order-1 on desktop) */}
@@ -143,6 +143,8 @@ export const App: React.FC = () => {
             <Editor
               text={text}
               metrics={metrics}
+              limits={limits}
+              onUpdateLimits={handleUpdateLimits}
               onChange={setText}
               onClear={handleClear}
               onRestoreCleared={handleRestoreCleared}
