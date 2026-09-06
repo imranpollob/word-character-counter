@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Logo Icon -->
+  <rect x="100" y="140" width="80" height="80" rx="20" fill="url(#blueGrad)" />
+  <path d="M125 160 v-8 h30 v8 M135 198 h10 M140 152 v36" stroke="#ffffff" stroke-width="4" stroke-linecap="round"
+    stroke-linejoin="round" fill="none" />
+
+  <!-- Title -->
+  <text x="210" y="195" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="52"
+    font-weight="800" letter-spacing="-1">WordCounter<tspan fill="#38bdf8">Pro</tspan></text>
+
+  <!-- Headline -->
+  <text x="100" y="310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="64"
+    font-weight="900" letter-spacing="-1.5">Online Word &amp; Character Counter</text>
+
+  <!-- Subtitle -->
+  <text x="100" y="380" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="30"
+    font-weight="500">Fast, Real-Time &amp; 100% Private Client-Side Text Analytics</text>
+
+  <!-- Metric Badges -->
+  <g transform="translate(100, 440)">
+    <rect x="0" y="0" width="220" height="60" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="25" y="38" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="20"
+      font-weight="700">Live Word Count</text>
+
+    <rect x="240" y="0" width="240" height="60" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="265" y="38" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="20"
+      font-weight="700">Character Limits</text>
+
+    <rect x="500" y="0" width="220" height="60" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="525" y="38" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="20"
+      font-weight="700">Reading Time</text>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imranpollob.github.io/word-character-counter/sitemap.xml
+
