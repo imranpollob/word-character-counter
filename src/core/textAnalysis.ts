@@ -1,4 +1,5 @@
 import { KeywordItem, TextAnalysisMetrics } from '../types/analysis';
+import { countCharacters, SENTENCE_SPLIT_REGEX } from './basicCounters';
 
 /**
  * Standard English stop words list for keyword filtering.
@@ -24,18 +25,37 @@ export const STOP_WORDS = new Set([
   "you'd", "you'll", "you're", "you've", 'your', 'yours', 'yourself', 'yourselves'
 ]);
 
+// CJK regex for unspaced scripts (Chinese, Japanese)
+const CJK_REGEX = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
+const WORD_TOKEN_REGEX = /[\p{L}\p{M}\p{N}]+(?:['’\-][\p{L}\p{M}\p{N}]+)*/gu;
+
+let wordSegmenter: Intl.Segmenter | null = null;
+if (typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function') {
+  try {
+    wordSegmenter = new Intl.Segmenter(undefined, { granularity: 'word' });
+  } catch {
+    wordSegmenter = null;
+  }
+}
+
 /**
- * Extracts and cleans words into lowercase tokens.
+ * Extracts and cleans words into lowercase tokens across any language or script.
+ * Correctly matches Unicode letters, combining marks (e.g. Bangla matras), numbers,
+ * contractions, and CJK ideographs.
  */
 export function extractWordTokens(text: string): string[] {
   if (!text || !text.trim()) return [];
-  // Match words, including contractions with apostrophes or hyphens
-  const matches = text.toLowerCase().match(/\b[a-z0-9]+(?:['’\-][a-z0-9]+)*\b/gi);
+  if (CJK_REGEX.test(text) && wordSegmenter) {
+    return [...wordSegmenter.segment(text.toLowerCase())]
+      .filter((s) => s.isWordLike)
+      .map((s) => s.segment);
+  }
+  const matches = text.toLowerCase().match(WORD_TOKEN_REGEX);
   return matches || [];
 }
 
 /**
- * Extracts sentences preserving their text.
+ * Extracts sentences preserving their text across international sentence terminators.
  */
 export function extractSentences(text: string): string[] {
   const trimmed = text.trim();
@@ -52,9 +72,9 @@ export function extractSentences(text: string): string[] {
   }
 
   return normalized
-    .split(/(?:[.!?]+)(?:\s+|$|["'”’\)]+)/)
-    .map(s => s.replace(/_/g, '.').trim())
-    .filter(s => s.length > 0 && /\S/.test(s));
+    .split(SENTENCE_SPLIT_REGEX)
+    .map((s) => s.replace(/_/g, '.').trim())
+    .filter((s) => s.length > 0 && /\S/.test(s));
 }
 
 /**
@@ -126,14 +146,14 @@ export function analyzeText(text: string, filterStopWords: boolean = false): Tex
   // Vocabulary Diversity (Type-Token Ratio)
   const vocabularyDiversity = Math.round((uniqueWords / totalWords) * 1000) / 10;
 
-  // Average word length (chars per word)
-  const totalCharsInWords = tokens.reduce((sum, token) => sum + token.length, 0);
+  // Average word length (chars per word, using grapheme clusters)
+  const totalCharsInWords = tokens.reduce((sum, token) => sum + countCharacters(token), 0);
   const averageWordLength = Math.round((totalCharsInWords / totalWords) * 10) / 10;
 
-  // Longest word
+  // Longest word (comparing visual grapheme length)
   let longestWord = '';
   for (const token of uniqueSet) {
-    if (token.length > longestWord.length) {
+    if (countCharacters(token) > countCharacters(longestWord)) {
       longestWord = token;
     }
   }

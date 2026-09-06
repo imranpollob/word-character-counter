@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextMetrics } from '../types/counter';
+import { InfoTooltip } from './InfoTooltip';
 
 interface StatsSummaryProps {
   metrics: TextMetrics;
@@ -70,8 +71,12 @@ export const StatsSummary: React.FC<StatsSummaryProps> = ({ metrics }) => {
 
       {/* 7. Reading Time */}
       <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-        <div className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 mb-1">
-          Reading Time
+        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 mb-1">
+          <span>Reading Time</span>
+          <InfoTooltip
+            content="Calculated at 225 words per minute (WPM), the standard average silent reading speed for adults."
+            align="left"
+          />
         </div>
         <div className="text-lg sm:text-xl font-bold text-slate-950 dark:text-white">
           {metrics.readingTimeFormatted}
@@ -80,8 +85,12 @@ export const StatsSummary: React.FC<StatsSummaryProps> = ({ metrics }) => {
 
       {/* 8. Speaking Time */}
       <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-        <div className="text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 mb-1">
-          Speaking Time
+        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 mb-1">
+          <span>Speaking Time</span>
+          <InfoTooltip
+            content="Calculated at 130 words per minute (WPM), the standard conversational speaking pace."
+            align="right"
+          />
         </div>
         <div className="text-lg sm:text-xl font-bold text-slate-950 dark:text-white">
           {metrics.speakingTimeFormatted}

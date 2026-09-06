@@ -3,31 +3,85 @@ import { TextMetrics } from '../types/counter';
 export const READING_WORDS_PER_MINUTE = 225;
 export const SPEAKING_WORDS_PER_MINUTE = 130;
 
+// CJK regex for unspaced scripts (Chinese, Japanese)
+const CJK_REGEX = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
+
+let wordSegmenter: Intl.Segmenter | null = null;
+if (typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function') {
+  try {
+    wordSegmenter = new Intl.Segmenter(undefined, { granularity: 'word' });
+  } catch {
+    wordSegmenter = null;
+  }
+}
+
 /**
- * Counts words by matching sequences of non-whitespace characters.
+ * Counts words across any language or script.
+ * For space-delimited scripts (English, Bangla, Spanish, Arabic, etc.), matches whitespace-separated words.
+ * For unspaced scripts (Chinese, Japanese), uses Unicode word segmentation.
  */
 export function countWords(text: string): number {
   if (!text || !text.trim()) return 0;
+  if (CJK_REGEX.test(text) && wordSegmenter) {
+    let count = 0;
+    for (const seg of wordSegmenter.segment(text)) {
+      if (seg.isWordLike) count++;
+    }
+    return count;
+  }
   const matches = text.trim().match(/\S+/g);
   return matches ? matches.length : 0;
 }
 
+// Lazy-initialized Intl.Segmenter instance for grapheme-cluster-accurate counting (emojis, flags, modifiers, combining accents)
+let graphemeSegmenter: Intl.Segmenter | null = null;
+if (typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function') {
+  try {
+    graphemeSegmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+  } catch {
+    graphemeSegmenter = null;
+  }
+}
+
 /**
- * Counts total characters including all spaces, tabs, and line breaks.
+ * Counts total characters (grapheme clusters) including spaces, tabs, and line breaks.
+ * Correctly counts multi-codepoint emojis (e.g. 👨‍👩‍👧‍👦, 🇺🇸, 👍🏽) and combining accents as 1 character.
  */
 export function countCharacters(text: string): number {
-  return text.length;
+  if (!text) return 0;
+  if (graphemeSegmenter) {
+    let count = 0;
+    for (const _ of graphemeSegmenter.segment(text)) {
+      count++;
+    }
+    return count;
+  }
+  // Fallback for older environments without Intl.Segmenter
+  return Array.from(text).length;
 }
 
 /**
- * Counts characters excluding all whitespace characters.
+ * Counts characters (grapheme clusters) excluding whitespace.
  */
 export function countCharactersNoSpaces(text: string): number {
-  return text.replace(/\s/g, '').length;
+  if (!text) return 0;
+  const noSpaces = text.replace(/\s+/g, '');
+  return countCharacters(noSpaces);
 }
 
 /**
- * Counts sentences while intelligently ignoring abbreviations and decimals.
+ * International sentence terminator regex supporting:
+ * - Western: . ! ?
+ * - Indic (Bangla, Hindi, Sanskrit): । (danda \u0964), ॥ (double danda \u0965)
+ * - CJK (Chinese, Japanese): 。 (ideographic period \u3002), ！ (\uFF01), ？ (\uFF1F)
+ * - Arabic / Persian / Urdu: ؟ (\u061F)
+ * - Armenian: ։ (\u0589)
+ * - Ethiopic: ። (\u1362)
+ */
+export const SENTENCE_SPLIT_REGEX = /(?:[。！？।॥؟։።]+|[.!?]+(?:\s+|$|["'”’\)\]]+))/;
+
+/**
+ * Counts sentences across any language while intelligently ignoring abbreviations and decimals.
  */
 export function countSentences(text: string): number {
   const trimmed = text.trim();
@@ -46,9 +100,9 @@ export function countSentences(text: string): number {
     normalized = normalized.replace(reg, `${abbr}_`);
   }
 
-  // Split on sentence terminators followed by whitespace, quote/bracket, or end of string
+  // Split on sentence terminators
   const sentences = normalized
-    .split(/(?:[.!?]+)(?:\s+|$|["'”’\)]+)/)
+    .split(SENTENCE_SPLIT_REGEX)
     .map((s) => s.trim())
     .filter((s) => s.length > 0 && /\S/.test(s));
 

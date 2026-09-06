@@ -74,4 +74,37 @@ describe('textAnalysis', () => {
     expect(analysisWithFilter.keywords1Gram.some(k => k.phrase === 'the')).toBe(false);
     expect(analysisWithoutFilter.keywords1Gram.some(k => k.phrase === 'the')).toBe(true);
   });
+
+  it('correctly analyzes Bangla text (vocabulary, unique words, and dari sentences)', () => {
+    const banglaText = 'আমি বাংলায় গান গাই। আমি বাংলাকে ভালোবাসি। তুমি কি জানো?';
+    const analysis = analyzeText(banglaText);
+
+    // 10 total words, 9 unique words ('আমি' repeats once)
+    expect(analysis.uniqueWords).toBe(9);
+    expect(analysis.vocabularyDiversity).toBe(90.0);
+    expect(analysis.longestWord).toBe('ভালোবাসি');
+
+    // Sentences separated by Dari (।) and question mark (?)
+    expect(extractSentences(banglaText).length).toBe(3);
+  });
+
+  it('correctly analyzes Spanish, Arabic, and CJK text', () => {
+    // Spanish with accents and inverted punctuation
+    const spanishText = '¡Hola mundo! ¿Cómo estás hoy?';
+    const spanishTokens = extractWordTokens(spanishText);
+    expect(spanishTokens).toEqual(['hola', 'mundo', 'cómo', 'estás', 'hoy']);
+    expect(extractSentences(spanishText).length).toBe(2);
+
+    // Arabic
+    const arabicText = 'مرحبا بكم في موقعنا. هل يعجبك الموقع؟';
+    const arabicTokens = extractWordTokens(arabicText);
+    expect(arabicTokens.length).toBe(7);
+    expect(extractSentences(arabicText).length).toBe(2);
+
+    // Chinese with ideographic full stops
+    const cjkText = '我爱编写代码。这也是一个句子！';
+    const cjkTokens = extractWordTokens(cjkText);
+    expect(cjkTokens.length).toBeGreaterThan(0);
+    expect(extractSentences(cjkText).length).toBe(2);
+  });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextAnalysisMetrics } from '../../types/analysis';
+import { InfoTooltip } from '../InfoTooltip';
 
 interface TextAnalysisSectionProps {
   analysis: TextAnalysisMetrics;
@@ -25,8 +26,12 @@ export const TextAnalysisSection: React.FC<TextAnalysisSectionProps> = ({ analys
 
         {/* 2. Vocabulary Diversity */}
         <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-          <div className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-1">
-            Vocab Diversity
+          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-1">
+            <span>Vocab Diversity</span>
+            <InfoTooltip
+              content="Calculated as (Unique Words ÷ Total Words) × 100. Measures vocabulary richness and lexical variety (Type-Token Ratio)."
+              align="right"
+            />
           </div>
           <div className="text-xl sm:text-2xl font-extrabold text-slate-950 dark:text-white">
             {analysis.vocabularyDiversity > 0 ? `${analysis.vocabularyDiversity.toFixed(1)}%` : '0%'}
