@@ -88,6 +88,30 @@
             },
             {
               "@type": "Question",
+              "name": "What is Vocabulary Diversity and how is it calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vocabulary Diversity (Type-Token Ratio) measures lexical richness using the formula: (Unique Words ÷ Total Words) × 100. Higher percentages signify diverse vocabulary, while lower scores indicate word repetition."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this tool support languages other than English?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. WordCounterPro provides universal multilingual support across all major world writing systems, including Bangla, Hindi, Arabic, Spanish, French, Cyrillic, Chinese, and Japanese, with native handling of international sentence terminators and unspaced scripts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How are emojis and accented characters counted?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Emojis and accents are counted using native grapheme cluster segmentation. Multi-codepoint emojis (such as 👨‍👩‍👧‍👦, flags 🇺🇸, and skin-tone modifiers 👍🏽) count accurately as 1 visual character."
+              }
+            },
+            {
+              "@type": "Question",
               "name": "How is reading time and speaking time estimated?",
               "acceptedAnswer": {
                 "@type": "Answer",
@@ -118,21 +142,27 @@
         style="max-width: 800px; margin: 2rem auto; padding: 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6;">
         <h1>Online Word & Character Counter — Free, Fast & Real-Time</h1>
         <p>A fast, free, and completely private tool to count words, characters with spaces, characters without spaces,
-          sentences, paragraphs, and estimated reading time in real time.</p>
+          sentences, paragraphs, vocabulary diversity, and estimated reading time in real time.</p>
 
         <h2>Key Features</h2>
         <ul>
           <li>Live word counter with instant keystroke calculations</li>
           <li>Characters with spaces and characters without spaces</li>
-          <li>Sentence, paragraph, and line counter</li>
+          <li>Vocabulary analytics: unique words, vocabulary diversity (TTR), average word and sentence length</li>
+          <li>Universal multilingual support (Bangla, Indic, Arabic, CJK, and European scripts)</li>
+          <li>Grapheme-accurate emoji counting (1 visual emoji = 1 character)</li>
           <li>Reading time (225 WPM) and speaking time (130 WPM)</li>
-          <li>Custom word and character target limits</li>
+          <li>Custom word and character target limit allowance bar</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
         <h3>How does the counter calculate words and characters?</h3>
         <p>Text is parsed directly in your web browser. Keystrokes, spaces, and punctuation are analyzed to generate
           counts without uploading any text to remote servers.</p>
+
+        <h3>Does it support languages other than English?</h3>
+        <p>Yes, full Unicode support covers Bangla, Hindi, Arabic, Spanish, Chinese, Japanese, and all world writing
+          systems.</p>
 
         <h3>What is reading time based on?</h3>
         <p>Reading time is calculated using standard silent reading speeds of 225 words per minute.</p>

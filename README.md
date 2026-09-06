@@ -1,121 +1,68 @@
-# WordCounterPro — Online Word & Character Counter
+# WordCounterPro
 
-> A high-performance, real-time, privacy-first online word and character counter with reading time, speaking time, custom limit tracking, and SEO optimization. Designed for seamless deployment on **GitHub Pages**.
+A fast, clean, and private online word and character counter. No ads, no tracking, no bloat.
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![React 19](https://img.shields.io/badge/React-19-61dafb.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)
-![Tailwind CSS v4](https://img.shields.io/badge/TailwindCSS-v4-38bdf8.svg)
-![100% Private](https://img.shields.io/badge/Privacy-100%25%20Client--Side-emerald.svg)
+👉 **[Use it live](https://imranpollob.github.io/word-character-counter/)**
 
 ---
 
-## ✨ Features (Phases 1 & 2 MVP)
+## Why this exists
 
-- ⚡ **Live Real-Time Counting**:
-  - **Words**: Intelligent whitespace & token parsing
-  - **Characters (with spaces)**: Total keystrokes & glyphs
-  - **Characters (without spaces)**: Keystrokes excluding whitespace
-  - **Sentences**: Smart boundary detection ignoring abbreviations (*Dr.*, *Mr.*, *vs.*) and decimals (*3.14*)
-  - **Paragraphs & Lines**: Dynamic block tracking
-- ⏱️ **Reading & Speaking Time**:
-  - **Reading speed**: Standard 225 WPM (Words Per Minute)
-  - **Speaking speed**: Standard 130 WPM
-- 🎯 **Custom Limits & Progress Bar**:
-  - Word or Character limit targets
-  - Visual status progress bar with threshold color transitions (Normal → Amber Warning at 80% → Red Alert at 100%+)
-  - Dynamic Remaining / Exceeded badge
-  - Quick-preset shortcuts (X/Twitter 280, Threads 500, Instagram 2,200, LinkedIn 3,000, SEO tags, Essays)
-- 🔒 **100% Privacy Guarantee**:
-  - All text is processed entirely inside your browser via client-side JavaScript.
-  - Zero server transmission, zero third-party telemetry, zero external tracking.
-- 💾 **Local Autosave**:
-  - Automatic debounced persistence to `localStorage`. Your draft restores seamlessly upon reload.
-  - Clear with quick **Undo** recovery to prevent accidental data loss.
-- 🌓 **Modern Responsive UI & Theming**:
-  - Dark Mode, Light Mode, and System Preference synchronization.
-  - Fluid mobile-friendly layout and distraction-free typography.
+Most online word counters are crammed with banner ads, slow scripts, or break when you paste non-English text and emojis. 
+
+WordCounterPro was built to do one thing well: give you instant, accurate stats on your writing with a clean, distraction-free interface.
+
+### What it does:
+- **Instant Core Counts**: Words, characters (with and without spaces), sentences, paragraphs, and lines as you type.
+- **Vocabulary Insights**: Tracks unique words, vocabulary diversity (Type-Token Ratio), average word/sentence length, and your longest words.
+- **Truly Multilingual**: Full support for any language — English, বাংলা (Bangla), हिन्दी (Hindi), العربية (Arabic), Español, Français, 中文 (Chinese), 日本語 (Japanese), and more. Handles native punctuation like Dari (`।`) and unspaced scripts automatically.
+- **Emoji-Accurate**: Uses native grapheme segmentation so emojis (like 👨‍👩‍👧‍👦, 👍🏽, or 🇺🇸) count as 1 character, not 4 or 11.
+- **Reading & Speaking Pace**: Estimates silent reading (225 WPM) and speaking presentation time (130 WPM), with interactive `?` tooltips showing how they're calculated.
+- **Target Limit Tracker**: Set a target word or character goal. A depletion bar counts down your allowance in emerald, amber, and red.
+- **100% Private**: Everything runs locally in your browser. Nothing you write ever touches a server.
+- **Dark & Light Mode**: Clean, high-contrast design that respects your system preferences.
 
 ---
 
-## 🔍 SEO & Search Engine Dominance
+## Tech Stack
 
-WordCounterPro is built from the ground up for organic search visibility:
-- **Schema.org Structured Data**:
-  - `WebApplication` JSON-LD schema declaring a free, browser-based utility tool.
-  - `FAQPage` JSON-LD schema for rich expandable FAQ search snippets on Google.
-- **Full Meta & Open Graph Coverage**:
-  - High-intent search title and meta description.
-  - Social media cards for X/Twitter, LinkedIn, Facebook, and Discord previews.
-- **Semantic Crawler Markup**:
-  - Informative guides, platform limit tables, and FAQs in pre-rendered semantic HTML.
-- **Search Engine Discovery**:
-  - Automated `robots.txt` and `sitemap.xml` generated directly in the distribution build.
+- **Framework**: React 19 + TypeScript
+- **Styling**: Tailwind CSS v4
+- **Tooling**: Vite + Vitest
+- **Deployment**: GitHub Pages (via GitHub Actions)
 
 ---
 
-## 🚀 Deploying to GitHub Pages (`github.io`)
+## Running Locally
 
-This project is configured out-of-the-box for GitHub Pages:
-
-1. **Push your code to GitHub**:
+1. **Clone the repository**:
    ```bash
-   git add .
-   git commit -m "Initial commit of WordCounterPro"
-   git branch -M main
-   git remote add origin https://github.com/imranpollob/word-character-counter.git
-   git push -u origin main
+   git clone https://github.com/imranpollob/word-character-counter.git
+   cd word-character-counter
    ```
 
-2. **Enable GitHub Pages in your Repository Settings**:
-   - Go to your repository on GitHub: `Settings` → `Pages`.
-   - Under **Build and deployment** → **Source**, select **GitHub Actions**.
-   - The included `.github/workflows/deploy.yml` will automatically build and deploy the application on every push to `main`!
-
-3. **Visit your live URL**:
+2. **Install dependencies**:
+   ```bash
+   npm install
    ```
-   https://imranpollob.github.io/word-character-counter/
+
+3. **Start the local dev server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Run unit tests**:
+   ```bash
+   npm test
+   ```
+
+5. **Build for production**:
+   ```bash
+   npm run build
    ```
 
 ---
 
-## 🛠️ Local Development
+## License
 
-### Prerequisites
-- Node.js 18+ (tested on v22)
-- npm 9+
-
-### Install Dependencies
-```bash
-npm install
-```
-
-### Start Development Server
-```bash
-npm run dev
-```
-
-### Run Unit Tests (Vitest)
-```bash
-npm test
-```
-
-### Build for Production
-```bash
-npm run build
-```
-
----
-
-## 🗺️ Roadmap Ahead
-
-- **Phase 3 (Text Analysis)**: Unique words, vocabulary diversity (TTR), average word/sentence length, longest word/sentence, keyword frequency and density tables, 1/2/3-word n-gram phrases.
-- **Phase 4 (Writing Quality + Accuracy)**: Flesch Reading Ease score, Flesch-Kincaid Grade Level, long-sentence diagnostics, Unicode-aware grapheme/emoji counting via `Intl.Segmenter`, multilingual word segmentation (CJK).
-- **Phase 5 (Advanced Tools)**: Text case conversion, whitespace cleanup, find & replace, `.docx` / `.md` / `.txt` file import and export.
-
----
-
-## 📄 License
-
-MIT License — free for personal and commercial use.
-
+MIT — feel free to use and modify for personal or commercial projects.

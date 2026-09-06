@@ -23,6 +23,21 @@ const FAQS: FaqItem[] = [
       'Characters with spaces includes letters, numbers, punctuation marks, and whitespace (spaces, tabs, line breaks). Characters without spaces counts only visible symbols and glyphs, excluding whitespace. Many academic papers, translations, and publication limits require character counts without spaces.',
   },
   {
+    question: 'What is Vocabulary Diversity and how is it calculated?',
+    answer:
+      'Vocabulary Diversity (Type-Token Ratio) measures the lexical richness of your writing using the formula: (Unique Words ÷ Total Words) × 100. A higher percentage indicates rich, varied word choice, while a lower percentage indicates word repetition.',
+  },
+  {
+    question: 'Does this counter support languages other than English?',
+    answer:
+      'Yes. WordCounterPro provides universal multilingual support across all major world writing systems—including Bangla, Hindi, Arabic, Spanish, French, Cyrillic, Chinese, and Japanese. It intelligently handles language-specific sentence markers (such as Bengali/Hindi Dari "।", Arabic "؟", and CJK "。") and accurately parses unspaced Asian scripts.',
+  },
+  {
+    question: 'How are emojis and accented characters counted?',
+    answer:
+      'Emojis and accented letters are counted using native grapheme cluster segmentation. Multi-codepoint emojis (such as 👨‍👩‍👧‍👦, flags 🇺🇸, and skin-tone modifiers 👍🏽) count accurately as 1 visual character, ensuring exact compliance with character limits on social platforms.',
+  },
+  {
     question: 'How are reading time and speaking time calculated?',
     answer:
       'Reading time is based on the average adult silent reading rate of 225 words per minute (WPM). Speaking time is based on standard conversational oral presentation speed of 130 words per minute.',
@@ -30,7 +45,7 @@ const FAQS: FaqItem[] = [
   {
     question: 'How does sentence counting handle abbreviations and decimals?',
     answer:
-      'Our parsing algorithm detects abbreviations (such as Dr., Mr., vs., e.g., i.e.) and decimal numbers (such as 3.14) so they are preserved without false sentence boundaries.',
+      'Our parsing algorithm protects abbreviations (such as Dr., Mr., vs., e.g., i.e.) and decimal numbers (such as 3.14) so they are preserved without creating false sentence boundaries.',
   },
 ];
 
@@ -71,9 +86,9 @@ export const SeoContent: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 flex items-center justify-center mb-3">
               <BookOpen className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">Accurate Live Counts</h3>
+            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">Live Core &amp; Vocab Metrics</h3>
             <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              Calculates words, total characters, characters without spaces, sentences, paragraphs, and reading time simultaneously.
+              Real-time calculation of words, characters (with/without spaces), sentences, paragraphs, reading/speaking time, unique words, and vocabulary diversity.
             </p>
           </div>
 
@@ -81,7 +96,7 @@ export const SeoContent: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mb-3">
               <Shield className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">100% Private On-Device</h3>
+            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">100% Private &amp; Offline</h3>
             <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               Zero network upload. All processing runs directly in your browser so confidential notes and drafts never leave your device.
             </p>
@@ -91,9 +106,9 @@ export const SeoContent: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 flex items-center justify-center mb-3">
               <Share2 className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">Platform Limit Presets</h3>
+            <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">Target Limit Allowance</h3>
             <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              Target exact limits for X (Twitter), LinkedIn, Threads, Instagram, and SEO tags with high-contrast real-time progress bars.
+              Track word or character targets with a fuel-gauge progress bar that reduces as text is added, alerting you in emerald, amber, and rose-red.
             </p>
           </div>
         </div>
