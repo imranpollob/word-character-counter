@@ -125,12 +125,12 @@ export const App: React.FC = () => {
         </header>
 
         {/* Responsive Grid:
-            - Mobile (< lg): Metrics & Analysis shown FIRST (order-1), Editor shown second (order-2)
+            - Mobile (< lg): Editor shown FIRST (order-1), Metrics & Analysis second (order-2)
             - Desktop (lg): Editor on LEFT (lg:order-1), Metrics & Analysis on RIGHT (lg:order-2)
         */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Metrics & Analysis Column (order-1 on mobile, lg:order-2 on desktop) */}
-          <div className="order-1 lg:order-2 lg:col-span-5 xl:col-span-5 2xl:col-span-4 space-y-4">
+          {/* Metrics & Analysis Column (order-2 on mobile, lg:order-2 on desktop) */}
+          <div className="order-2 lg:order-2 lg:col-span-5 xl:col-span-5 2xl:col-span-4 space-y-4">
             {/* 1. Counter Metrics */}
             <StatsSummary metrics={metrics} />
 
@@ -138,8 +138,8 @@ export const App: React.FC = () => {
             <TextAnalysisSection analysis={analysis} />
           </div>
 
-          {/* Editor Column (order-2 on mobile, lg:order-1 on desktop) */}
-          <div className="order-2 lg:order-1 lg:col-span-7 xl:col-span-7 2xl:col-span-8">
+          {/* Editor Column (order-1 on mobile, lg:order-1 on desktop) */}
+          <div className="order-1 lg:order-1 lg:col-span-7 xl:col-span-7 2xl:col-span-8">
             <Editor
               text={text}
               metrics={metrics}
