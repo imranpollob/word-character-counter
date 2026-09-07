@@ -104,7 +104,7 @@ export const Editor: React.FC<EditorProps> = ({
           <button
             onClick={handleToggleLimit}
             className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold transition-colors border cursor-pointer ${limits.enabled
-                ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-200 border-blue-400 dark:border-blue-600'
+                ? 'bg-brand-50 dark:bg-brand-950/70 text-brand-700 dark:text-brand-200 border-brand-400 dark:border-brand-600'
                 : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-950 dark:hover:text-white'
               }`}
           >
@@ -118,7 +118,7 @@ export const Editor: React.FC<EditorProps> = ({
                 <button
                   onClick={() => handleTypeChange('words')}
                   className={`px-2 py-0.5 rounded-md font-bold transition-colors cursor-pointer ${limits.type === 'words'
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-brand-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white'
                     }`}
                 >
@@ -127,7 +127,7 @@ export const Editor: React.FC<EditorProps> = ({
                 <button
                   onClick={() => handleTypeChange('characters')}
                   className={`px-2 py-0.5 rounded-md font-bold transition-colors cursor-pointer ${limits.type === 'characters'
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-brand-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white'
                     }`}
                 >
@@ -141,7 +141,7 @@ export const Editor: React.FC<EditorProps> = ({
                 max="1000000"
                 value={limits.target || ''}
                 onChange={handleTargetChange}
-                className="w-20 px-2 py-0.5 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden text-right"
+                className="w-20 px-2 py-0.5 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-950 dark:text-white focus:ring-2 focus:ring-brand-500 focus:outline-hidden text-right"
                 placeholder="Target"
               />
 
@@ -170,7 +170,7 @@ export const Editor: React.FC<EditorProps> = ({
           {/* Sample Text Button */}
           <button
             onClick={handleLoadSample}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 hover:text-brand-600 dark:hover:text-brand-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 shadow-xs transition-colors cursor-pointer"
             title="Load sample text"
           >
             <FilePlus2 className="w-3.5 h-3.5" />
@@ -229,7 +229,7 @@ export const Editor: React.FC<EditorProps> = ({
             if (clearedBackup) setClearedBackup(null);
           }}
           placeholder="Start typing or paste your text here..."
-          className="w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[560px] bg-transparent text-slate-950 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base sm:text-lg leading-relaxed resize-none focus:outline-hidden font-normal selection:bg-blue-600 selection:text-white"
+          className="w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[560px] bg-transparent text-slate-950 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base sm:text-lg leading-relaxed resize-none focus:outline-hidden font-normal selection:bg-brand-600 selection:text-white"
           spellCheck="true"
         />
       </div>

@@ -1,9 +1,52 @@
 @import "tailwindcss";
+@import "./brand.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Brand typography */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Brand accent scale (teal) — replaces the stock blue accent */
+  --color-brand-50: #ecfdfb;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+  --color-brand-950: #042f2e;
+
+  /* Retune the neutral ramp to the brand's teal-tinted charcoals so
+     every dark surface / border picks up the brand automatically. */
+  --color-slate-100: #ecfdfb;
+  --color-slate-600: #2b4842;
+  --color-slate-700: #1f3a35;
+  --color-slate-800: #12312c;
+  --color-slate-900: #0d1f1c;
+  --color-slate-950: #071311;
+
+  /* Brand radius (8px base) — tightens the stock rounded-xl / 2xl */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.875rem;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Brand headings use the Playfair Display display serif */
+  h1,
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-tight);
   }
 }

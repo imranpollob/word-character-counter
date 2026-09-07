@@ -26,7 +26,7 @@ export const TextAnalysisSection: React.FC<TextAnalysisSectionProps> = ({ analys
 
         {/* 2. Vocabulary Diversity */}
         <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-1">
+          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 mb-1">
             <span>Vocab Diversity</span>
             <InfoTooltip
               content="Calculated as (Unique Words ÷ Total Words) × 100. Measures vocabulary richness and lexical variety (Type-Token Ratio)."

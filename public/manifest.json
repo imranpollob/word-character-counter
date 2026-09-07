@@ -1,5 +1,5 @@
 {
-  "name": "Online Word & Character Counter",
+  "name": "Word & Character Counter",
   "short_name": "Word Counter",
   "description": "Free real-time online word and character counter with reading time and text analytics.",
   "start_url": "./",

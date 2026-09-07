@@ -11,7 +11,7 @@ export const StatsSummary: React.FC<StatsSummaryProps> = ({ metrics }) => {
     <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
       {/* 1. Words */}
       <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-        <div className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 mb-1">
+        <div className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 mb-1">
           Words
         </div>
         <div className="text-xl sm:text-2xl font-extrabold text-slate-950 dark:text-white">
@@ -85,7 +85,7 @@ export const StatsSummary: React.FC<StatsSummaryProps> = ({ metrics }) => {
 
       {/* 8. Speaking Time */}
       <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 sm:p-3.5 transition-colors shadow-xs">
-        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 mb-1">
+        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 mb-1">
           <span>Speaking Time</span>
           <InfoTooltip
             content="Calculated at 130 words per minute (WPM), the standard conversational speaking pace."

@@ -24,7 +24,7 @@
 
   <!-- Headline -->
   <text x="100" y="310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="64"
-    font-weight="900" letter-spacing="-1.5">Online Word &amp; Character Counter</text>
+    font-weight="900" letter-spacing="-1.5">Word &amp; Character Counter</text>
 
   <!-- Subtitle -->
   <text x="100" y="380" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="30"

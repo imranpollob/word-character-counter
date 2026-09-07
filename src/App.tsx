@@ -82,7 +82,7 @@ export const App: React.FC = () => {
         <header className="mb-6 flex items-start justify-between gap-4">
           <div>
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white">
-              Online Word &amp; Character Counter
+              Word &amp; Character Counter
             </h1>
             <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
               Calculate live word count, character count (with &amp; without spaces), sentences, paragraphs, reading time, and speaking time in real time.
@@ -95,8 +95,8 @@ export const App: React.FC = () => {
               onClick={() => setTheme('light')}
               title="Light Mode"
               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light'
-                  ? 'bg-blue-600 text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-brand-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
             >
               <Sun className="w-4 h-4" />
@@ -105,8 +105,8 @@ export const App: React.FC = () => {
               onClick={() => setTheme('dark')}
               title="Dark Mode"
               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark'
-                  ? 'bg-blue-600 text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-brand-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
             >
               <Moon className="w-4 h-4" />
@@ -115,8 +115,8 @@ export const App: React.FC = () => {
               onClick={() => setTheme('system')}
               title="System Default"
               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'system'
-                  ? 'bg-blue-600 text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-brand-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
             >
               <Monitor className="w-4 h-4" />

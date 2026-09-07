@@ -60,7 +60,7 @@ export const InfoTooltip: React.FC<InfoTooltipProps> = ({
         }}
         aria-label="How is this calculated?"
         aria-expanded={isOpen}
-        className="w-3.5 h-3.5 rounded-full border border-slate-400/80 dark:border-slate-500/80 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-600 dark:hover:border-slate-300 text-[10px] font-bold inline-flex items-center justify-center leading-none transition-colors cursor-pointer select-none focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+        className="w-3.5 h-3.5 rounded-full border border-slate-400/80 dark:border-slate-500/80 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-600 dark:hover:border-slate-300 text-[10px] font-bold inline-flex items-center justify-center leading-none transition-colors cursor-pointer select-none focus:outline-hidden focus:ring-1 focus:ring-brand-500"
       >
         ?
       </button>

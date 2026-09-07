@@ -83,7 +83,7 @@ export const SeoContent: React.FC = () => {
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950/70 text-brand-700 dark:text-brand-300 flex items-center justify-center mb-3">
               <BookOpen className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-950 dark:text-white mb-1.5">Live Core &amp; Vocab Metrics</h3>
@@ -135,7 +135,7 @@ export const SeoContent: React.FC = () => {
               {PLATFORM_LIMITS.map((item) => (
                 <tr key={item.platform} className="hover:bg-slate-100/60 dark:hover:bg-slate-800 transition-colors">
                   <td className="px-4 py-3 font-semibold text-slate-950 dark:text-white">{item.platform}</td>
-                  <td className="px-4 py-3 font-bold text-blue-700 dark:text-blue-300">{item.limit}</td>
+                  <td className="px-4 py-3 font-bold text-brand-700 dark:text-brand-300">{item.limit}</td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-300">{item.note}</td>
                 </tr>
               ))}
@@ -147,7 +147,7 @@ export const SeoContent: React.FC = () => {
       {/* Frequently Asked Questions (FAQ) with Schema Alignment */}
       <div className="max-w-4xl mx-auto mb-12">
         <div className="flex items-center gap-2 mb-6">
-          <HelpCircle className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          <HelpCircle className="w-6 h-6 text-brand-600 dark:text-brand-400" />
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-950 dark:text-white">
             Frequently Asked Questions
           </h2>
