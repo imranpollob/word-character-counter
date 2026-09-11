@@ -6,7 +6,7 @@
 @theme {
   /* Brand typography */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-serif: "Outfit", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 
   /* Brand accent scale (teal) — replaces the stock blue accent */
@@ -42,7 +42,7 @@
     scroll-behavior: smooth;
   }
 
-  /* Brand headings use the Playfair Display display serif */
+  /* Brand headings use the Outfit display serif */
   h1,
   h2 {
     font-family: var(--font-serif);
