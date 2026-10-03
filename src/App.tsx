@@ -89,8 +89,9 @@ export const App: React.FC = () => {
             </p>
           </div>
 
-          {/* Theme Switcher on the Right */}
-          <div className="flex items-center shrink-0 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-700 shadow-xs text-xs">
+          {/* Header actions: theme switcher + tools launcher */}
+          <div className="header-actions flex items-center gap-2 shrink-0">
+            <div className="flex items-center shrink-0 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-700 shadow-xs text-xs">
             <button
               onClick={() => setTheme('light')}
               title="Light Mode"
@@ -121,6 +122,8 @@ export const App: React.FC = () => {
             >
               <Monitor className="w-4 h-4" />
             </button>
+            </div>
+            <span data-brand-launcher></span>
           </div>
         </header>
 
