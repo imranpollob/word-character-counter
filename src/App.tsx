@@ -5,6 +5,7 @@ import { Editor } from './components/Editor';
 import { TextAnalysisSection } from './components/TextAnalysis/TextAnalysisSection';
 import { SeoContent } from './components/SeoContent';
 import { Footer } from './components/Footer';
+import { ToolsLauncher } from './components/ToolsLauncher';
 import { calculateMetrics } from './core/basicCounters';
 import { analyzeText } from './core/textAnalysis';
 import { LimitSettings, ThemeMode } from './types/counter';
@@ -79,8 +80,8 @@ export const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-950 text-slate-950 dark:text-white transition-colors duration-200">
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8">
         {/* Header Section: Semantic H1 on Left, Theme Switcher on Right */}
-        <header className="mb-6 flex items-start justify-between gap-4">
-          <div>
+        <header className="mb-6 flex flex-wrap items-start justify-between gap-4">
+          <div className="min-w-0 flex-1 basis-48">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white">
               Word &amp; Character Counter
             </h1>
@@ -89,8 +90,9 @@ export const App: React.FC = () => {
             </p>
           </div>
 
-          {/* Theme Switcher on the Right */}
-          <div className="flex items-center shrink-0 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-700 shadow-xs text-xs">
+          {/* Header actions: theme switcher + tools launcher */}
+          <div className="header-actions ml-auto flex items-center gap-2 shrink-0">
+            <div className="flex items-center shrink-0 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-700 shadow-xs text-xs">
             <button
               onClick={() => setTheme('light')}
               title="Light Mode"
@@ -121,6 +123,8 @@ export const App: React.FC = () => {
             >
               <Monitor className="w-4 h-4" />
             </button>
+            </div>
+            <ToolsLauncher />
           </div>
         </header>
 
